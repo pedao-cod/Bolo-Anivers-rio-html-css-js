@@ -1,0 +1,99 @@
+:root {
+  --bg: #0f1720;
+  --plate: #e9eef6;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #0b1220 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter, system-ui, sans-serif;
+  color: #fff;
+  padding: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.stage {
+  width: 820px;
+  max-width: 95vw;
+  height: 560px;
+  background: transparent;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 10px;
+}
+.ui {
+  position: absolute;
+  left: 12px;
+  bottom: 12px; /* Movi para baixo para não cobrir a mensagem */
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+button {
+  background: #fff;
+  color: #0b1220;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+button:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+button:active {
+  transform: translateY(1px);
+}
+.caption {
+  position: absolute;
+  right: 14px;
+  bottom: 12px; /* Movi para baixo */
+  font-size: 12px;
+  opacity: 0.6;
+  z-index: 10;
+}
+.birthday-message {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff9eb5; /* Cor combinando com a primeira camada */
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  line-height: 1.4;
+  font-family: "Arial", cursive;
+}
+@media (max-width: 540px) {
+  .stage {
+    height: 470px;
+  }
+  .birthday-message {
+    font-size: 20px;
+    top: 20px;
+  }
+  .ui {
+    flex-direction: column;
+    bottom: 40px;
+  }
+  .caption {
+    display: none;
+  } /* Oculta a legenda no celular para limpar a tela */
+}
