@@ -1,7 +1,7 @@
 :root {
   --bg: #0f1720;
-  --plate: #e9eef6;
 }
+
 html,
 body {
   height: 100%;
@@ -16,6 +16,7 @@ body {
   overflow: hidden;
   box-sizing: border-box;
 }
+
 .stage {
   width: 820px;
   max-width: 95vw;
@@ -25,20 +26,23 @@ body {
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
+
 canvas {
   width: 100%;
   height: 100%;
   display: block;
   border-radius: 10px;
 }
+
 .ui {
   position: absolute;
   left: 12px;
-  bottom: 12px; /* Movi para baixo para não cobrir a mensagem */
+  bottom: 12px;
   display: flex;
   gap: 12px;
   z-index: 10;
 }
+
 button {
   background: #fff;
   color: #0b1220;
@@ -50,21 +54,31 @@ button {
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
+
 button:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
 }
+
 button:active {
   transform: translateY(1px);
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .caption {
   position: absolute;
   right: 14px;
-  bottom: 12px; /* Movi para baixo */
+  bottom: 12px;
   font-size: 12px;
   opacity: 0.6;
   z-index: 10;
 }
+
 .birthday-message {
   position: absolute;
   top: 40px;
@@ -73,17 +87,20 @@ button:active {
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  color: #ff9eb5; /* Cor combinando com a primeira camada */
+  color: #ffb2cc;
   text-shadow:
-    0 0 10px rgba(0, 0, 0, 0.8),
-    2px 2px 4px rgba(0, 0, 0, 0.5);
+    0 0 10px rgba(0, 0, 0, 0.9),
+    2px 2px 4px rgba(0, 0, 0, 0.6);
   z-index: 10;
   line-height: 1.4;
   font-family: "Arial", cursive;
+  padding: 0 10px; /* Garante que o texto não cole nas bordas do celular */
 }
+
+/* RESPONSIVIDADE PARA CELULARES */
 @media (max-width: 540px) {
   .stage {
-    height: 470px;
+    height: 80vh; /* Altura se adapta a tela do celular */
   }
   .birthday-message {
     font-size: 20px;
@@ -91,9 +108,15 @@ button:active {
   }
   .ui {
     flex-direction: column;
-    bottom: 40px;
+    bottom: 20px;
+    width: calc(100% - 24px); /* Botões ocupam a tela toda */
+  }
+  button {
+    width: 100%; /* Mais fácil para clicar com o dedo */
+    padding: 14px 16px;
+    font-size: 16px;
   }
   .caption {
-    display: none;
-  } /* Oculta a legenda no celular para limpar a tela */
+    display: none; /* Esconde a legenda no celular para limpar o visual */
+  }
 }
